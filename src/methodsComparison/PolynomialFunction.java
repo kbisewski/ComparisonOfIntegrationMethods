@@ -1,11 +1,11 @@
-package comparisonMethods;
+package methodsComparison;
 
 /**
   @author Karol Bisewski 16734
  */
-public class PolynomialFunction{
+public class PolynomialFunction extends Function{
  
-    double[] coefficients;
+    private double[] coefficients;
 
     PolynomialFunction(double[] numbers) {
         this.coefficients = numbers;
@@ -19,4 +19,13 @@ public class PolynomialFunction{
         return result;
     }
     
+    int getDegree() {
+        int degree = coefficients.length - 1;
+        return degree;
+    }
+    
+    double getCoefficientStandingNextToVariableWithExponent(int exponent) {
+        double coefficient = coefficients[exponent];
+        return coefficient;
+    }
 }

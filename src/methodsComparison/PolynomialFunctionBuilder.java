@@ -1,6 +1,4 @@
-package comparisonMethods;
-
-import java.util.Scanner;
+package methodsComparison;
 
 /**
  * @author Karol Bisewski 16734
@@ -17,7 +15,7 @@ public class PolynomialFunctionBuilder {
         System.out.print("Please insert degree of polynomial function: ");
         int degree;
         do{    
-            degree = getIntegerFromUser();
+            degree = Input.getIntegerFromUser();
             if (degree < 0) {
                 System.out.print("\tDegree must be greater equal zero. Try again: ");
             }
@@ -25,31 +23,13 @@ public class PolynomialFunctionBuilder {
         return degree;
     }
     
-    private static int getIntegerFromUser() {
-        Scanner input = new Scanner(System.in);
-        while(!input.hasNextInt()) {
-                input.next();
-                System.out.print("\tDegree must be integer. Try again: ");
-            }
-            return input.nextInt();
-    }
-    
     private static double[] getCoefficientsFromUser(int degree) {
         double[] coefficients = new double[degree+1];
         for(int exponent = degree; exponent >= 0; exponent--) {
-            System.out.print("Insert coefficient for x^" + exponent + ": ");
-            coefficients[exponent] = getSingleCoefficientFromUser();
+            System.out.print("Insert coefficient standing next to x^" + exponent + ": ");
+            coefficients[exponent] = Input.getDoubleFromUser();
         }
         return coefficients;
     }
     
-    private static double getSingleCoefficientFromUser() {
-        Scanner input = new Scanner(System.in);
-        while(!input.hasNextDouble()) {
-            input.next();
-            System.out.print("\tTry again: ");
-        }
-        double coefficient = input.nextDouble();
-        return coefficient;
-    }
 }
