@@ -62,7 +62,7 @@ public class Integral {
         }
         return result;
     }
-    2
+    
     private double calculateStep(double amount) {
         double interval = end - begin;
         return interval / amount;

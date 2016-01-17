@@ -9,9 +9,24 @@ public class ComparisonOfIntegrationMethods {
         PolynomialFunction polynomial = PolynomialFunctionBuilder.create();
         Integral integral = IntegralBuilder.create(polynomial);
         int amountOfSubintervals = getAmountOfSubintervalsFromUser();
-        System.out.println("Classic method: " + integral.computeClassically());
-        System.out.println("Rectangle method: " + integral.computeWithRectangleMethod(amountOfSubintervals));
-        System.out.println("Trapezoid method: " + integral.computeWithTrapezoidMethod(amountOfSubintervals));
+        
+        double exactValue = integral.computeClassically();
+        System.out.println("Classic method result: " + exactValue);
+        drawLine(20);
+        
+        double rectangleMethodResult = integral.computeWithRectangleMethod(amountOfSubintervals);
+        System.out.println("Rectangle method result: " + rectangleMethodResult);
+        System.out.println("Absolute error: " + computeAbsoluteError(exactValue, rectangleMethodResult));
+        System.out.println("Relative error: " + computeRelativeError(exactValue, rectangleMethodResult));
+        drawLine(20);
+        
+        double trapezoidMethodResult = integral.computeWithTrapezoidMethod(amountOfSubintervals);
+        System.out.println("Trapezoid method result: " + trapezoidMethodResult);
+        System.out.println("Absolute error: " + computeAbsoluteError(exactValue, trapezoidMethodResult));
+        System.out.println("Relative error: " + computeRelativeError(exactValue, trapezoidMethodResult));
+        drawLine(20);
+        
+        
     }
 
     static int getAmountOfSubintervalsFromUser() {
@@ -26,4 +41,22 @@ public class ComparisonOfIntegrationMethods {
         }while(amountOfSubintervals < 1);
         return amountOfSubintervals;
     }
+    
+    static double computeAbsoluteError(double exact, double approx) {
+        return Math.abs(exact - approx);
+    }
+    
+    static double computeRelativeError(double exact, double approx) {
+        return Math.abs((exact - approx) / exact);
+    }
+    
+    static void drawLine(int a) {
+        for(int i = 0; i < a; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+    
+    
+    
 }
