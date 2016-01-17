@@ -14,7 +14,7 @@ public class PolynomialFunctionBuilder {
     private static int getDegreeFromUser() {
         System.out.print("Please insert degree of polynomial function: ");
         int degree;
-        do{    
+        do{
             degree = Input.getIntegerFromUser();
             if (degree < 0) {
                 System.out.print("\tDegree must be greater equal zero. Try again: ");
